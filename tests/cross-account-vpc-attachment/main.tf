@@ -1,5 +1,4 @@
 provider "aws" {
-  region  = "us-east-1"
   profile = "aws"
 
   default_tags {
@@ -10,7 +9,6 @@ provider "aws" {
 }
 
 provider "aws" {
-  region  = "us-east-1"
   alias   = "owner"
   profile = "awsalternate"
 
@@ -182,7 +180,7 @@ module "vpc_member" {
 
   name            = "tardigrade-tgw-${local.id}"
   cidr            = "10.1.0.0/16"
-  azs             = ["us-east-1a", "us-east-1b"]
+  azs             = slice(data.aws_availability_zones.available.names, 0, 2)
   private_subnets = ["10.1.1.0/24", "10.1.2.0/24"]
 }
 
@@ -194,8 +192,12 @@ module "vpc_owner" {
 
   name            = "tardigrade-tgw-${local.id}"
   cidr            = "10.0.0.0/16"
-  azs             = ["us-east-1a", "us-east-1b"]
+  azs             = slice(data.aws_availability_zones.available.names, 0, 2)
   private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+}
+
+data "aws_availability_zones" "available" {
+  state = "available"
 }
 
 data "terraform_remote_state" "prereq" {
