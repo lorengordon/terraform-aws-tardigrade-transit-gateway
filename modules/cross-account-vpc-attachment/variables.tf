@@ -8,6 +8,12 @@ variable "transit_gateway_id" {
   type        = string
 }
 
+variable "accepter_time_sleep" {
+  description = "Object of time_sleep attributes to delay the creation of the TGW attachment accepter"
+  type        = any
+  default     = null
+}
+
 variable "appliance_mode_support" {
   description = "Whether Appliance Mode support is enabled. Valid values: disable, enable"
   type        = string

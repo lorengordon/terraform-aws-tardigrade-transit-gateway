@@ -17,6 +17,7 @@ Gateway route table association or propagations, and VPC routes.
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.0 |
+| <a name="provider_time"></a> [time](#provider\_time) | n/a |
 
 ## Resources
 
@@ -29,6 +30,7 @@ Gateway route table association or propagations, and VPC routes.
 |------|-------------|------|---------|:--------:|
 | <a name="input_transit_gateway_attachment_id"></a> [transit\_gateway\_attachment\_id](#input\_transit\_gateway\_attachment\_id) | ID of the TGW attachment | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to apply to the TGW attachment | `map(string)` | `{}` | no |
+| <a name="input_time_sleep"></a> [time\_sleep](#input\_time\_sleep) | Object of time\_sleep attributes to delay the creation of the TGW attachment accepter | <pre>object({<br>    create_duration = string<br>  })</pre> | <pre>{<br>  "create_duration": "0s"<br>}</pre> | no |
 | <a name="input_transit_gateway_default_route_table_association"></a> [transit\_gateway\_default\_route\_table\_association](#input\_transit\_gateway\_default\_route\_table\_association) | Boolean whether the VPC Attachment should be associated to the Transit Gateway default route table | `bool` | `true` | no |
 | <a name="input_transit_gateway_default_route_table_propagation"></a> [transit\_gateway\_default\_route\_table\_propagation](#input\_transit\_gateway\_default\_route\_table\_propagation) | Boolean whether the VPC Attachment should propagate routes to the Transit Gateway propagation default route table | `bool` | `true` | no |
 | <a name="input_transit_gateway_route_table_association"></a> [transit\_gateway\_route\_table\_association](#input\_transit\_gateway\_route\_table\_association) | ID of the Transit Gateway route table to associate with the VPC attachment (an attachment can be associated with a single TGW route table) | <pre>object({<br>    transit_gateway_route_table_id = string<br>  })</pre> | `null` | no |

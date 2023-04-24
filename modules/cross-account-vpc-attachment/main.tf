@@ -18,6 +18,7 @@ module "vpc_accepter" {
   }
 
   transit_gateway_attachment_id = module.vpc_attachment.vpc_attachment.id
+  time_sleep                    = var.accepter_time_sleep
   vpc_routes                    = [for route in var.vpc_routes : route if route.provider == "aws.owner"]
   tags                          = var.tags
 

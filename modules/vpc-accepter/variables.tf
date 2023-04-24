@@ -3,6 +3,17 @@ variable "transit_gateway_attachment_id" {
   type        = string
 }
 
+variable "time_sleep" {
+  description = "Object of time_sleep attributes to delay the creation of the TGW attachment accepter"
+  type = object({
+    create_duration = string
+  })
+  default = {
+    create_duration = "0s"
+  }
+  nullable = false
+}
+
 variable "tags" {
   description = "Map of tags to apply to the TGW attachment"
   type        = map(string)
