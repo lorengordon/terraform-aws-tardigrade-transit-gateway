@@ -50,3 +50,9 @@ variable "vpc_routes" {
   }))
   default = []
 }
+
+variable "auto_accept_shared_attachments" {
+   description = "Flag indicating if shared attachments should be auto-accepted"
+   type        = bool
+   default     = true
+}
